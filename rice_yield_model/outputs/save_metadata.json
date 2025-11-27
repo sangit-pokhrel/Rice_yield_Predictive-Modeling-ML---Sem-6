@@ -1,0 +1,16 @@
+{
+  "saved_files": [
+    "C:\\Users\\Lenovo\\Documents\\6th_Semester_Final_Sem_CU\\Individual\\datasets\\Collected\\outputs\\model.joblib",
+    "C:\\Users\\Lenovo\\Documents\\6th_Semester_Final_Sem_CU\\Individual\\datasets\\Collected\\outputs\\model.pkl",
+    "C:\\Users\\Lenovo\\Documents\\6th_Semester_Final_Sem_CU\\Individual\\datasets\\Collected\\outputs\\best_random_forest.joblib",
+    "C:\\Users\\Lenovo\\Documents\\6th_Semester_Final_Sem_CU\\Individual\\datasets\\Collected\\outputs\\best_xgboost.joblib",
+    "C:\\Users\\Lenovo\\Documents\\6th_Semester_Final_Sem_CU\\Individual\\datasets\\Collected\\outputs\\model_feature_names.csv",
+    "C:\\Users\\Lenovo\\Documents\\6th_Semester_Final_Sem_CU\\Individual\\datasets\\Collected\\outputs\\summary_stats.csv",
+    "C:\\Users\\Lenovo\\Documents\\6th_Semester_Final_Sem_CU\\Individual\\datasets\\Collected\\outputs\\holdout_metrics.xlsx",
+    "C:\\Users\\Lenovo\\Documents\\6th_Semester_Final_Sem_CU\\Individual\\datasets\\Collected\\outputs\\model_metrics.json"
+  ],
+  "saved_primary_model": "C:\\Users\\Lenovo\\Documents\\6th_Semester_Final_Sem_CU\\Individual\\datasets\\Collected\\outputs\\model.joblib",
+  "feature_file": "C:\\Users\\Lenovo\\Documents\\6th_Semester_Final_Sem_CU\\Individual\\datasets\\Collected\\outputs\\model_feature_names.csv",
+  "summary_stats": "C:\\Users\\Lenovo\\Documents\\6th_Semester_Final_Sem_CU\\Individual\\datasets\\Collected\\outputs\\summary_stats.csv",
+  "timestamp": "2025-11-27T23:42:59.716728"
+}

@@ -54,15 +54,18 @@ export default function HeroSection() {
             {/* Buttons */}
            <div className="flex flex-col md:flex-row gap-4">
   {/* View Products Button */}
+  <Link to="/weather">
+
   <button className="group flex-1 flex items-center justify-center gap-2 px-8 py-4 rounded-full text-lg font-semibold
                      bg-transparent text-white border border-yellow-200
                      hover:bg-yellow-200 hover:text-black hover:border-yellow-200
                      transition-colors duration-300">
     <span className="flex items-center gap-2">
       <ArrowUpRight className="w-5 h-5 font-bold transition-all duration-300 group-hover:order-first group-hover:mr-2" />
-      View Our Products
+      Check 7 Day Weather Forecast
     </span>
   </button>
+  </Link>
 
   {/* Check Rice Crop Yield Button */}
   <Link to="/predict">

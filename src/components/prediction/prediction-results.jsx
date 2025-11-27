@@ -1,13 +1,8 @@
-
 "use client"
 
-import { useState } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
+import { Badge } from "@/components/ui/badge"
 import {
   PieChart,
   Pie,
@@ -23,7 +18,7 @@ import {
 } from "recharts"
 import { Calendar, MapPin, Droplets, Thermometer, Beaker, TrendingUp, Leaf } from "lucide-react"
 
-// Dummy data for Deukhuri region
+
 const yieldPredictionData = [
   { month: "Chaitra", yield: 4.2, optimal: 4.8 },
   { month: "Baisakh", yield: 5.1, optimal: 5.5 },
@@ -53,113 +48,105 @@ const plantingSchedule = [
   { activity: "Harvesting", period: "Kartik 1 - Kartik 30", status: "upcoming" },
 ]
 
-export default function RicePredictionDashboard() {
-  const [location, setLocation] = useState("Deukhuri-3, Dang")
-  const [landSize, setLandSize] = useState("2.5")
-  const [riceVariety, setRiceVariety] = useState("Sabitri")
-
+export default function PredictionResults({ formData }) {
   return (
-    <div className="container mx-auto px-4 py-8 space-y-8">
-      {/* Header Section */}
+    <div className="space-y-8">
+      {/* Header */}
       <div className="text-center space-y-4">
-        <div className="inline-flex items-center gap-8 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium">
+        <div className="inline-flex items-center gap-2 bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-medium">
           <Leaf className="w-4 h-4" />
-          Smart Agriculture for Deukhuri
+          Prediction Results
         </div>
-        <h1 className="text-4xl font-bold text-foreground mt-4">Rice Yield Prediction</h1>
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          AI-powered predictions for small-scale farmers in Deukhuri region. Get insights on optimal planting times,
-          expected yields, and farming recommendations.
+        <h1 className="text-4xl font-bold text-gray-900">Your Rice Yield Prediction</h1>
+        <p className="text-lg text-gray-600">
+          Based on {formData.region} • {formData.location} • {formData.riceType}
         </p>
       </div>
 
-      {/* Input Form */}
-      <Card className="border-2 border-primary/20">
+      {/* Input Summary Card */}
+      <Card className="border-2 border-blue-200 bg-blue-50">
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <MapPin className="w-5 h-5 text-primary" />
-            Farm Information
+          <CardTitle className="flex items-center gap-2 text-blue-700">
+            <MapPin className="w-5 h-5" />
+            Your Farm Details
           </CardTitle>
-          <CardDescription>Enter your farm details to get personalized predictions</CardDescription>
         </CardHeader>
-        <CardContent className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="space-y-2">
-            <Label htmlFor="location">Location</Label>
-            <Select value={location} onValueChange={setLocation}>
-              <SelectTrigger>
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="Deukhuri-1, Dang">Deukhuri-1, Dang</SelectItem>
-                <SelectItem value="Deukhuri-2, Dang">Deukhuri-2, Dang</SelectItem>
-                <SelectItem value="Deukhuri-3, Dang">Deukhuri-3, Dang</SelectItem>
-                <SelectItem value="Deukhuri-4, Dang">Deukhuri-4, Dang</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="landSize">Land Size (Bigha)</Label>
-            <Input
-              id="landSize"
-              value={landSize}
-              onChange={(e) => setLandSize(e.target.value)}
-              placeholder="Enter land size"
-            />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="variety">Rice Variety</Label>
-            <Select value={riceVariety} onValueChange={setRiceVariety}>
-              <SelectTrigger>
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="Sabitri">Sabitri</SelectItem>
-                <SelectItem value="Radha-4">Radha-4</SelectItem>
-                <SelectItem value="Hardinath-1">Hardinath-1</SelectItem>
-                <SelectItem value="Mansuli">Mansuli</SelectItem>
-              </SelectContent>
-            </Select>
+        <CardContent>
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+            <div>
+              <p className="text-sm text-gray-600">Land Area</p>
+              <p className="font-semibold">
+                {formData.landArea} {formData.landUnit}
+              </p>
+            </div>
+            <div>
+              <p className="text-sm text-gray-600">Region</p>
+              <p className="font-semibold">{formData.region}</p>
+            </div>
+            <div>
+              <p className="text-sm text-gray-600">Location</p>
+              <p className="font-semibold">{formData.location}</p>
+            </div>
+            <div>
+              <p className="text-sm text-gray-600">Rice Variety</p>
+              <p className="font-semibold">{formData.riceType}</p>
+            </div>
+            {formData.waterSource && (
+              <div>
+                <p className="text-sm text-gray-600">Water Source</p>
+                <p className="font-semibold">{formData.waterSource}</p>
+              </div>
+            )}
+            {formData.latitude && formData.longitude && (
+              <div>
+                <p className="text-sm text-gray-600">Geolocation</p>
+                <p className="font-semibold text-xs">
+                  {formData.latitude.toFixed(4)}°, {formData.longitude.toFixed(4)}°
+                </p>
+              </div>
+            )}
           </div>
         </CardContent>
       </Card>
 
-      <Card className="bg-primary/5 border-primary/20">
+      {/* Prediction Summary */}
+      <Card className="bg-gradient-to-r from-green-50 to-blue-50 border-2 border-green-200">
         <CardHeader>
-          <CardTitle className="text-primary">AI Prediction Summary</CardTitle>
+          <CardTitle className="text-green-700">AI Prediction Summary</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="text-center">
-              <div className="text-3xl font-bold text-primary">6.8 tons</div>
-              <div className="text-sm text-muted-foreground">Expected Total Yield</div>
+              <div className="text-3xl font-bold text-green-600">6.8 tons</div>
+              <div className="text-sm text-gray-600">Expected Total Yield</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-secondary">2.72 tons/bigha</div>
-              <div className="text-sm text-muted-foreground">Yield per Bigha</div>
+              <div className="text-3xl font-bold text-blue-600">2.72 tons/bigha</div>
+              <div className="text-sm text-gray-600">Yield per Bigha</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-accent">NPR 2,04,000</div>
-              <div className="text-sm text-muted-foreground">Estimated Revenue</div>
+              <div className="text-3xl font-bold text-orange-600">NPR 2,04,000</div>
+              <div className="text-sm text-gray-600">Estimated Revenue</div>
             </div>
           </div>
           <Separator />
           <div className="space-y-2">
-            <h4 className="font-medium text-primary">Recommendations:</h4>
-            <ul className="space-y-1 text-sm text-muted-foreground">
+            <h4 className="font-medium text-green-700">Recommendations:</h4>
+            <ul className="space-y-1 text-sm text-gray-700">
               <li>• Plant during Jestha 10-25 for optimal yield</li>
               <li>• Consider soil pH adjustment to reach 6.5</li>
               <li>• Monitor rainfall - supplemental irrigation may be needed</li>
-              <li>• Sabitri variety is well-suited for your location</li>
+              <li>• {formData.riceType} variety is well-suited for your location</li>
             </ul>
           </div>
         </CardContent>
       </Card>
 
-       {/* Environmental Factors */}
+      {/* Environmental Factors */}
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Thermometer className="w-5 h-5 text-chart-3" />
+            <Thermometer className="w-5 h-5 text-orange-600" />
             Environmental Conditions
           </CardTitle>
           <CardDescription>Current vs optimal conditions for rice cultivation</CardDescription>
@@ -169,30 +156,30 @@ export default function RicePredictionDashboard() {
             {weatherData.map((item) => (
               <div key={item.factor} className="space-y-3">
                 <div className="flex items-center gap-2">
-                  {item.factor === "Rainfall" && <Droplets className="w-4 h-4 text-chart-3" />}
-                  {item.factor === "Temperature" && <Thermometer className="w-4 h-4 text-secondary" />}
-                  {item.factor === "Humidity" && <Droplets className="w-4 h-4 text-chart-3" />}
-                  {item.factor === "Soil pH" && <Beaker className="w-4 h-4 text-chart-5" />}
+                  {item.factor === "Rainfall" && <Droplets className="w-4 h-4 text-blue-600" />}
+                  {item.factor === "Temperature" && <Thermometer className="w-4 h-4 text-orange-600" />}
+                  {item.factor === "Humidity" && <Droplets className="w-4 h-4 text-blue-600" />}
+                  {item.factor === "Soil pH" && <Beaker className="w-4 h-4 text-purple-600" />}
                   <span className="text-sm font-medium">{item.factor}</span>
                 </div>
                 <div className="space-y-1">
                   <div className="flex justify-between items-center">
-                    <span className="text-xs text-muted-foreground">Current</span>
+                    <span className="text-xs text-gray-600">Current</span>
                     <span className="text-lg font-bold">
                       {item.current}
                       {item.unit}
                     </span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-xs text-muted-foreground">Optimal</span>
-                    <span className="text-sm text-primary">
+                    <span className="text-xs text-gray-600">Optimal</span>
+                    <span className="text-sm text-green-600">
                       {item.optimal}
                       {item.unit}
                     </span>
                   </div>
-                  <div className="w-full bg-muted rounded-full h-2">
+                  <div className="w-full bg-gray-200 rounded-full h-2">
                     <div
-                      className="bg-primary h-2 rounded-full transition-all duration-300"
+                      className="bg-green-600 h-2 rounded-full transition-all duration-300"
                       style={{
                         width: `${Math.min((item.current / item.optimal) * 100, 100)}%`,
                       }}
@@ -205,16 +192,15 @@ export default function RicePredictionDashboard() {
         </CardContent>
       </Card>
 
-
-      {/* Prediction Results */}
+      {/* Charts Section */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <Card className="lg:col-span-2">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <TrendingUp className="w-5 h-5 text-primary" />
+              <TrendingUp className="w-5 h-5 text-green-600" />
               Yield Prediction by Month
             </CardTitle>
-            <CardDescription>Expected rice yield (tons/bigha) throughout the growing season</CardDescription>
+            <CardDescription>Expected rice yield throughout the growing season</CardDescription>
           </CardHeader>
           <CardContent>
             <ResponsiveContainer width="100%" height={300}>
@@ -224,8 +210,8 @@ export default function RicePredictionDashboard() {
                 <YAxis />
                 <Tooltip />
                 <Legend />
-                <Bar dataKey="yield" fill="var(--color-chart-1)" name="Predicted Yield" />
-                <Bar dataKey="optimal" fill="var(--color-chart-4)" name="Optimal Yield" />
+                <Bar dataKey="yield" fill="#16a34a" name="Predicted Yield" />
+                <Bar dataKey="optimal" fill="#0ea5e9" name="Optimal Yield" />
               </BarChart>
             </ResponsiveContainer>
           </CardContent>
@@ -234,10 +220,10 @@ export default function RicePredictionDashboard() {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Beaker className="w-5 h-5 text-secondary" />
+              <Beaker className="w-5 h-5 text-purple-600" />
               Soil Composition
             </CardTitle>
-            <CardDescription>Current soil analysis for your location</CardDescription>
+            <CardDescription>Current soil analysis</CardDescription>
           </CardHeader>
           <CardContent>
             <ResponsiveContainer width="100%" height={200}>
@@ -265,28 +251,27 @@ export default function RicePredictionDashboard() {
         </Card>
       </div>
 
-     
       {/* Planting Schedule */}
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Calendar className="w-5 h-5 text-accent" />
+            <Calendar className="w-5 h-5 text-amber-600" />
             Optimal Planting Schedule
           </CardTitle>
-          <CardDescription>Recommended timeline for maximum yield in Deukhuri region</CardDescription>
+          <CardDescription>Recommended timeline for maximum yield</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
-            {plantingSchedule.map((activity, index) => (
-              <div key={activity.activity} className="flex items-center gap-4 p-4 rounded-lg border">
+            {plantingSchedule.map((activity) => (
+              <div key={activity.activity} className="flex items-center gap-4 p-4 rounded-lg border border-gray-200">
                 <div className="flex-shrink-0">
                   <div
                     className={`w-3 h-3 rounded-full ${
                       activity.status === "completed"
-                        ? "bg-primary"
+                        ? "bg-green-600"
                         : activity.status === "current"
-                          ? "bg-secondary"
-                          : "bg-muted"
+                          ? "bg-blue-600"
+                          : "bg-gray-300"
                     }`}
                   />
                 </div>
@@ -305,16 +290,13 @@ export default function RicePredictionDashboard() {
                       {activity.status}
                     </Badge>
                   </div>
-                  <p className="text-sm text-muted-foreground mt-1">{activity.period}</p>
+                  <p className="text-sm text-gray-600 mt-1">{activity.period}</p>
                 </div>
               </div>
             ))}
           </div>
         </CardContent>
       </Card>
-
-      {/* Prediction Summary */}
-      
     </div>
   )
 }

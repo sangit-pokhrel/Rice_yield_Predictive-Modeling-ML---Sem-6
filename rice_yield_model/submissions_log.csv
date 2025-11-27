@@ -1,0 +1,9 @@
+timestamp,prediction_MT_per_HA,payload_land_area,payload_unit,payload_region,payload_location,payload_rice_type,payload_humidity,payload_soil_ph,payload_phosphorus,payload_nitrogen,payload_organic,payload_water_source,payload_season_rain_sum,payload_season_rain_mean,payload_season_tmean,payload_season_tmax,payload_season_tmin,payload_year,payload_area,feat_Season_Rainfall_sum,feat_Season_Rainfall_mean,feat_Season_Tmean_mean,feat_Season_Tmax_mean,feat_Season_Tmin_mean,feat_Season_Humidity_mean,feat_area,warnings
+2025-11-27T18:01:14.719279,3.669252795815297,1.5,Hectares,Dang,Ward-3,Improved,72.5,6.4,25.0,240.0,3.2,Irrigation,450,56.25,29.8,33.5,24.1,2024.0,1.5,450.0,56.25,29.8,33.5,24.1,72.5,1.5,
+2025-11-27T18:12:14.403587,3.669252795815297,1.5,Hectares,Dang,Ward-3,Improved,72.5,6.4,25.0,240.0,3.2,Irrigation,450,56.25,29.8,33.5,24.1,2024.0,1.5,450.0,56.25,29.8,33.5,24.1,72.5,1.5,
+2025-11-27T18:37:22.505013,3.669252795815297,1.5,,,,,72.5,,,,,,450,56.25,29.8,33.5,24.1,,1.5,450.0,56.25,29.8,33.5,24.1,72.5,1.5,
+2025-11-27T18:38:13.302743,3.669252795815297,1.5,,,,,72.5,,,,,,450,56.25,29.8,33.5,24.1,,1.5,450.0,56.25,29.8,33.5,24.1,72.5,1.5,
+2025-11-27T18:39:11.959327,3.669252795815297,1.5,,,,,72.5,,,,,,450,56.25,29.8,33.5,24.1,,1.5,450.0,56.25,29.8,33.5,24.1,72.5,1.5,
+2025-11-27T18:50:26.838762,3.669252795815297,1.5,Hectares,Dang,Ward-3,Improved,72.5,6.4,25.0,240.0,3.2,Irrigation,450,56.25,29.8,33.5,24.1,2024.0,1.5,450.0,56.25,29.8,33.5,24.1,72.5,1.5,
+2025-11-27T19:24:06.409031,3.085557954545455,123.0,Hectares,Dang,lamahi,Traditional,72.5,6.4,25.0,240.0,3.2,Irrigation,1350,168.75,25.5,30.5,20.5,2024.0,123.0,1350.0,168.75,25.5,30.5,20.5,72.5,123.0,
+2025-11-27T19:37:29.005747,3.085557954545455,1.2506,Hectares,Dang,latthahawa,Improved,73.0,7.0,20.0,200.0,5.0,Mixed,1350,168.75,25.5,30.5,20.5,2025.0,1.2506,1350.0,168.75,25.5,30.5,20.5,73.0,1.2506,
